@@ -3,7 +3,7 @@ Docker-Java8
 
 ## Summary
 
-Repository name in Docker Hub: **[williamyeh/java8](https://registry.hub.docker.com/u/williamyeh/java8/)**
+Repository name in Docker Hub: **[re6exp/debian-jessie-oracle-jdk-8](https://registry.hub.docker.com/u/re6exp/debian-jessie-oracle-jdk-8/)**
 
 This repository contains Dockerized [Java](https://www.java.com/) 1.8, published to the public [Docker Hub](https://registry.hub.docker.com/) via **automated build** mechanism.
 
@@ -13,31 +13,20 @@ This repository contains Dockerized [Java](https://www.java.com/) 1.8, published
 
 This docker image contains the following software stack:
 
-- OS: Debian jessie (built from [debian:jessie](https://registry.hub.docker.com/_/debian/)).
+- OS: Debian jessie (built from [re6exp/debian-jessie](https://github.com/re6exp/debian-jessie)).
 
-- Java: Oracle JDK 1.8.0_31-b13
+- Java: Oracle JDK 1.8.0_X
 
 
 ### Dependencies
 
-- [debian:jessie](https://registry.hub.docker.com/_/debian/).
+- [re6exp:debian-jessie](https://registry.hub.docker.com/u/re6exp/debian-jessie/).
 
-
-
-## Why yet another Java image for Docker?
-
-There has been quite a few Java images for Docker (e.g., [search](https://registry.hub.docker.com/search?q=java) in the Docker Hub), so why reinvent the wheel?
-
-In the beginning I used the [pulse00/java](https://github.com/dubture-dockerfiles/java). It worked well, but left some room for improvement:
-
-- *Base OS image* - It was built from [stackbrew/ubuntu:13.10](https://registry.hub.docker.com/u/stackbrew/ubuntu/), which may not be the smallest one.  On the other hand, [debian:jessie](https://registry.hub.docker.com/_/debian/), as recommended in this [article](http://crosbymichael.com/dockerfile-best-practices-take-2.html), worth a try.
-
-- *Unnecessary dependencies* - It installed, at the very beginning of its Dockerfile, the [software-properties-common](https://packages.debian.org/sid/admin/software-properties-common) package, which in turns installed some Python3 packages.  I prefered to incorporate these stuff only when absolutely needed.
-
-Therefore, I built this Docker image on my own, also as an exercise.
 
 
 ## Alternatives
+
+- [williamyeh/java8](https://registry.hub.docker.com/u/williamyeh/java8/) - this image based on William's work.
 
 - [errordeveloper/oracle-jdk](https://registry.hub.docker.com/u/errordeveloper/oracle-jdk/), if you prefer a minimalistic Oracle JDK 8 container on top of busybox.
 
@@ -46,32 +35,32 @@ Therefore, I built this Docker image on my own, also as an exercise.
 ## Installation
 
    ```
-   $ docker pull williamyeh/java8
+   $ docker pull re6exp/debian-jessie-oracle-jdk-8:latest
    ```
 
 
 ## Usage
 
-Used mostly as a base image for other Java-based applications. But if you'd like to use the CLI, here are some examples for you.
+Can be used as a base image for other Java-based development environment.
 
 
 #### Run `java`
 
 ```
-$ docker run --rm williamyeh/java8
+$ docker run --rm re6exp/debian-jessie-oracle-jdk-8
 ```
 
 
 #### Run `javac`
 
 ```
-$ docker run -it --rm williamyeh/java8 javac
+$ docker run -it --rm re6exp/debian-jessie-oracle-jdk-8 javac
 ```
 
 
 ### Dig into container
 
 ```
-$ docker run -it williamyeh/java8 bash
+$ docker run -it re6exp/debian-jessie-oracle-jdk-8 /bin/bash
 ```
 
